@@ -12,17 +12,20 @@ var async = require('async');
 
 // Register Create Student Get Form
 exports.register_get = function(req, res, next){
-  var schools;
-  School.find({})
-  .sort({name: "asc"})
-  .then(function(school){
-    schools = school;
-  })
-  res.render('register', {schools})
-}
+
+      School.find({})
+      .sort({name: "asc"})
+      .then(function(schools){
+        Topic.find({})
+        .sort({name: "asc"})
+        .then(function(topics){
+          res.render('register', {schools, topics})
+        })
+      })
+  }
 
 // Register Create Student Post
-exports.register_post = function(req, res, next){
+exports.register_post = [
   // Validate fields.
   body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
   body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
@@ -41,10 +44,6 @@ exports.register_post = function(req, res, next){
   sanitizeBody('lastName').trim().escape(),
   sanitizeBody('address').trim().escape(),
   sanitizeBody('email').trim().escape(),
-	sanitizeBody('phone').trim().escape();
+  sanitizeBody('phone').trim().escape()
   
-  var id = req.params.id;
-  var school_id = School.find({name: req.body.school}).exec();
-
-  
-}
+]
