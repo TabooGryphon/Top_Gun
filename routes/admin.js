@@ -8,6 +8,12 @@ const admin_controller = require('../controllers/adminController');
 
 router.get('/', admin_controller.main);
 
+router.get('/students', admin_controller.students_get);
 
+router.get('/schools', admin_controller.schools_get);
+
+router.get('/topics', admin_controller.topics_get);
+
+router.get('/presenters', admin_controller.presenters_get);
 
 module.exports = router
