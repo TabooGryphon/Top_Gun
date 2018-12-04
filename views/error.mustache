@@ -5,8 +5,11 @@
 <body class="container" style="width: 100%">
 {{>header}}
 {{>nav}}
-
-<p>You have successfully registered {{thestudent.firstName}}</p>
+<main class="row justify-content-center m-5">
+  <div class="col-6 justify-contet-center">
+    <h2>{{error.errors.email.message}}</h2>
+  </div>
+</main>
 
 
 

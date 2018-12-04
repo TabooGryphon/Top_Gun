@@ -50,8 +50,15 @@ exports.register_post = [
 
   function registerStudent(req, res, next){
 
+    const errors = validationResult(req);
 
-    //const errors = validationResult(req);
+    Student.find({'email': req.body.email})
+    .then(function(results){
+      if (results){
+        return 
+      }
+    })
+    
 
     var student_register = new Student({
       lastName: req.body.lastName,
@@ -66,9 +73,14 @@ exports.register_post = [
       choice5: req.body.choice5,
     })
 
-    Student.create(student_register)
-    .then(function(student){
-      res.render('success', student_register);
+    Student.create(student_register, function(err, thestudent){
+      if (err){
+        res.render('error' ,{error: err});
+        console.log(err);
+      }else{
+        res.render('success', {thestudent});
+        console.log(thestudent);
+      }
     })
   }
   
