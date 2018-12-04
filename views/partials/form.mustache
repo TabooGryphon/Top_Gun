@@ -11,7 +11,11 @@
 				Address:      <input type="text" name="address" placeholder="1234 5th st">
 			</div>
 			<div class="row-12 text-right p-1">
-				School:      <input type="text" name="school" placeholder="">
+				School:      <select name="schools">
+												{{#school}}
+												  <option value="{{_id}}">{{name}}</option>
+												{{/school}}
+											</select>
 			</div>
 			<div class="row-12 text-right p-1">
 				E-mail:      <input type="text" name="email" placeholder=''>
@@ -22,35 +26,35 @@
       <div class="row-12 text-right p-1">
         <select name="choice1">
           {{#topic}}
-          {{title}}
+          <option value="{{_id}}">{{title}}</option>
           {{/topic}}
         </select>
       </div>
       <div class="row-12 text-right p-1">
         <select name="choice2">
           {{#topic}}
-          {{title}}
+          <option value="{{title}}">{{title}}</option>
           {{/topic}}
         </select>
       </div>
       <div class="row-12 text-right p-1">
         <select name="choice3">
           {{#topic}}
-          {{title}}
+          <option value="{{title}}">{{title}}</option>
           {{/topic}}
         </select>
       </div>
       <div class="row-12 text-right p-1">
         <select name="choice4">
           {{#topic}}
-          {{title}}
+          <option value="{{title}}">{{title}}</option>
           {{/topic}}
         </select>
       </div>
       <div class="row-12 text-right p-1">
         <select name="choice5">
           {{#topic}}
-          {{title}}
+          <option value="{{title}}">{{title}}</option>
           {{/topic}}
         </select>
       </div>

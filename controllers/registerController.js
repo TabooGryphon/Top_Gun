@@ -1,7 +1,7 @@
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
-var School = require('../models/High_School');
+var School = require('../models/School');
 var Presenter = require('../models/Presenter');
 var Room = require('../models/Room');
 var Schedule = require('../models/Schedule');
@@ -12,20 +12,17 @@ var async = require('async');
 
 // Register Create Student Get Form
 exports.register_get = function(req, res, next){
-  var topic;
-  Topic.find()
-  .exec(function(err,all){
-    if(err){
-      return next(err)
-    }
-    topic = all;
+  var schools;
+  School.find({})
+  .sort({name: "asc"})
+  .then(function(school){
+    schools = school;
   })
-  res.render('register',{topic});
+  res.render('register', {schools})
 }
 
 // Register Create Student Post
 exports.register_post = function(req, res, next){
-
   // Validate fields.
   body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
   body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
@@ -44,13 +41,10 @@ exports.register_post = function(req, res, next){
   sanitizeBody('lastName').trim().escape(),
   sanitizeBody('address').trim().escape(),
   sanitizeBody('email').trim().escape(),
-	sanitizeBody('phone').trim().escape(),
-	
-	(req, res, next) => {
-		async.parallel({
-			school: function(){
-				School.find()
-			}
-		})
-	}
+	sanitizeBody('phone').trim().escape();
+  
+  var id = req.params.id;
+  var school_id = School.find({name: req.body.school}).exec();
+
+  
 }
