@@ -30,16 +30,16 @@ exports.register_get = function(req, res, next){
 exports.register_post = [
 
   // Validate fields.
-  //body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
-  //body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
-	//body('school', 'Please select your School').isLength({ min: 1 }).trim(),
-	//body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
-	//body('phone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
-	//body('choice1', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	//body('choice2', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	//body('choice3', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	//body('choice4', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	//body('choice5', 'Please make fill all choices').isLength({ min: 1 }).trim(),
+  body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
+  body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
+	body('school', 'Please select your School').isLength({ min: 1 }).trim(),
+	body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
+	body('phone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
+	body('choice1', 'Please make fill all choices').isLength({ min: 1 }).trim(),
+	body('choice2', 'Please make fill all choices').isLength({ min: 1 }).trim(),
+	body('choice3', 'Please make fill all choices').isLength({ min: 1 }).trim(),
+	body('choice4', 'Please make fill all choices').isLength({ min: 1 }).trim(),
+	body('choice5', 'Please make fill all choices').isLength({ min: 1 }).trim(),
 
   // Sanitize fields.
   sanitizeBody('firstName').trim().escape(),
