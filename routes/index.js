@@ -11,5 +11,7 @@ router.get('/', index_controller.main);
 
 router.get('/register', register_controller.register_get);
 
+router.post('/register', register_controller.register_post);
+
 
 module.exports = router
