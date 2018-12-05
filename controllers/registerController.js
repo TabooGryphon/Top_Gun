@@ -19,9 +19,8 @@ exports.register_get = function(req, res, next){
         Topic.find({})
         .sort({name: "asc"})
         .then(function(topics){
+          console.log(topics);
           res.render('register', {schools, topics})
-          var ryan = new Date;
-          console.log(ryan);
         })
       })
   }
@@ -59,7 +58,6 @@ exports.register_post = [
       }
     })
     
-
     var student_register = new Student({
       lastName: req.body.lastName,
       firstName: req.body.firstName,

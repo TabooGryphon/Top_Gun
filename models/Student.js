@@ -8,11 +8,11 @@ const Student = new mongoose.Schema({
   school: [{type: Schema.Types.ObjectId, ref: 'School'}],
   email: {type:String, trim:true, required:true, unique:true, default:''},
   timeStamp: {type: Date, trim: true, required: true, default:Date.now},
-  choice1: [{type: Schema.Types.ObjectId, ref: 'Topics'}],
-  choice2: [{type: Schema.Types.ObjectId, ref: 'Topics'}],
-  choice3: [{type: Schema.Types.ObjectId, ref: 'Topics'}],
-  choice4: [{type: Schema.Types.ObjectId, ref: 'Topics'}],
-  choice5: [{type: Schema.Types.ObjectId, ref: 'Topics'}],
+  choice1: [{type: Schema.Types.ObjectId,  ref: 'Topics'}],
+  choice2: [{type: Schema.Types.ObjectId,  ref: 'Topics'}],
+  choice3: [{type: Schema.Types.ObjectId,  ref: 'Topics'}],
+  choice4: [{type: Schema.Types.ObjectId,  ref: 'Topics'}],
+  choice5: [{type: Schema.Types.ObjectId,  ref: 'Topics'}],
 })
 
 // Virtual for Participant's proper name
