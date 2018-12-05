@@ -9,6 +9,10 @@ const register_controller = require('../controllers/registerController');
 // Homepage
 router.get('/', index_controller.main);
 
+router.get('/topics', index_controller.topic_list_get);
+
+router.get('/topics/:id', index_controller.topic_detail_get);
+
 router.get('/register', register_controller.register_get);
 
 router.post('/register', register_controller.register_post);

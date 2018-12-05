@@ -19,7 +19,6 @@ exports.register_get = function(req, res, next){
         Topic.find({})
         .sort({name: "asc"})
         .then(function(topics){
-          console.log(topics);
           res.render('register', {schools, topics})
         })
       })
@@ -74,10 +73,8 @@ exports.register_post = [
     Student.create(student_register, function(err, thestudent){
       if (err){
         res.render('error' ,{error: err});
-        console.log(err);
       }else{
         res.render('success', {thestudent});
-        console.log(thestudent);
       }
     })
   }
