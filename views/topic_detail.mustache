@@ -3,14 +3,20 @@
 {{>head}}
 
 <body class="container">
-{{>header}}
+{{>header2}}
 {{>nav}}
 
-  <main class="row justify-content-center m-5">
-    <div>
-      <p>You have successfully registered {{thestudent.firstName}}</p>
+  <main class="row justify-content-center m-5" >
+    <div class="jumbotron jumbotron-fluid py-3 rounded">
+      <div class="container">
+        <h1 class="display-4">{{topic.title}}</h1>
+        <div class="bg-secondary p-2 rounded">
+          <p class="lead text-light">{{topic.description}}</p>
+        </div>
+      </div>
     </div>
   </main>
+
 
 
   <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.

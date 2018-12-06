@@ -20,8 +20,6 @@ exports.register_get = function(req, res, next){
         .sort({name: "asc"})
         .then(function(topics){
           res.render('register', {schools, topics})
-          var ryan = new Date;
-          console.log(ryan);
         })
       })
   }
@@ -50,9 +48,15 @@ exports.register_post = [
 
   function registerStudent(req, res, next){
 
+    const errors = validationResult(req);
 
-    //const errors = validationResult(req);
-
+    Student.find({'email': req.body.email})
+    .then(function(results){
+      if (results){
+        return 
+      }
+    })
+    
     var student_register = new Student({
       lastName: req.body.lastName,
       firstName: req.body.firstName,
@@ -66,9 +70,12 @@ exports.register_post = [
       choice5: req.body.choice5,
     })
 
-    Student.create(student_register)
-    .then(function(student){
-      res.render('success', student_register);
+    Student.create(student_register, function(err, thestudent){
+      if (err){
+        res.render('error' ,{error: err});
+      }else{
+        res.render('success', {thestudent});
+      }
     })
   }
   

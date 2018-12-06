@@ -5,12 +5,12 @@
 <body class="container">
 {{>header}}
 {{>nav}}
+<main class="row justify-content-center m-5">
+  <div class="col-6 justify-contet-center">
+    <h2>{{error.errors.email.message}}</h2>
+  </div>
+</main>
 
-  <main class="row justify-content-center m-5">
-    <div>
-      <p>You have successfully registered {{thestudent.firstName}}</p>
-    </div>
-  </main>
 
 
   <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.

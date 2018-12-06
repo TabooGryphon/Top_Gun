@@ -6,4 +6,11 @@ const Topic = new mongoose.Schema({
   description: {type: String, required: true, trim: true, }
 })
 
+// Virtual for School's location
+Topic
+.virtual('url')
+.get(function (){
+  return '/topics/' + this._id;
+});
+
 module.exports = mongoose.model('Topic', Topic)
