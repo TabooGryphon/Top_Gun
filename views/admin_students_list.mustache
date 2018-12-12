@@ -3,17 +3,17 @@
 {{>head}}
 
 <body class="container">
-{{>header2}}
+{{>header}}
 {{>nav}}
     <main>
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Students</a>
+              <a class="nav-link active" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/schools">Schools</a>
+              <a class="nav-link" href="/admin/schools">Schools</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/topics">Topics</a>
@@ -22,13 +22,32 @@
               <a class="nav-link" href="/admin/presenters">Presenters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Ryan</a>
+              <a class="nav-link" href="/admin/rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/sessions">Sessions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/schedules">Schedules</a>
             </li>
           </ul>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="row justify-content-center">
+            <table class=" col table-striped mx-5">
+              <tr>
+                <th>Name</th>
+                <th>School</th>
+              </tr>
+                {{#students}}
+                  <tr>
+                    <td><a href="{{url}}">{{properName}}</a></td> <td><a href="{{school.url}}">{{school.name}}</a></td>
+                  </tr>
+                {{/students}}
+            </table>
+          </div>
+          <br>
+          <button type="button" onclick="location.href='/admin/students/create'">Add Student</button>
         </div>
       </div>
     </main>

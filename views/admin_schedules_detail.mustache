@@ -3,14 +3,15 @@
 {{>head}}
 
 <body class="container">
-{{>header2}}
+{{>header}}
 {{>nav}}
-
+    <main>
+      <div class="col">
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/students">Students</a>
+              <a class="nav-link" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/schools">Schools</a>
@@ -22,16 +23,43 @@
               <a class="nav-link" href="/admin/presenters">Presenters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Ryan</a>
+              <a class="nav-link" href="/admin/rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/sessions">Sessions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  active" href="/admin/schedules">Schedules</a>
             </li>
           </ul>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <div class="row justify-content-center">
+          <table class="col-6 mx-auto">
+            <tr>
+              <td class="text-right font-weight-bold">Session:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{schedules.session.sessionNumber}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Room:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{schedules.room.roomNum}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Topic:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{schedules.topic.title}}</td>
+            </tr>
+          </table>
+          </div>
+          <br>
+          <a href="{{schedules.urlUpdate}}">Update</a>&nbsp&nbsp
+          <a href="{{schedules.urlDelete}}">Delete</a>
         </div>
       </div>
-
+      </div>
+    </main>
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
     NOTE: These should be minified in a build script -->
     <script type="text/javascript" src="/js/jquery.js"></script>

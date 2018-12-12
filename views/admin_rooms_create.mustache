@@ -3,7 +3,7 @@
 {{>head}}
 
 <body class="container">
-{{>header2}}
+{{>header}}
 {{>nav}}
     <main>
       <div class="card text-center m-5">
@@ -19,20 +19,41 @@
               <a class="nav-link" href="/admin/topics">Topics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/presenters">Presenters</a>
+              <a class="nav-link" href="/admin/presenters">Presenters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Ryan</a>
+              <a class="nav-link active" href="/admin/rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/sessions">Sessions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/schedules">Schedules</a>
             </li>
           </ul>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+	            <div class="m-5" style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px;">
+		            <form action="" method="post">
+			            <div class="row-12 text-right p-1">
+				            <label>Room Number:</label>&nbsp&nbsp<input type="text" name="roomNum">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>Building:</label>&nbsp&nbsp<input type="text" name="building">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>Capacity:</label>&nbsp&nbsp<input type="number" name="capacity">
+			            </div>
+                  <input type="submit" formmethod="post">
+		            </form>
+	            </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
-
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
     NOTE: These should be minified in a build script -->
     <script type="text/javascript" src="/js/jquery.js"></script>

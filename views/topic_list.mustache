@@ -7,11 +7,12 @@
 {{>nav}}
 
   <main class="row justify-content-center m-5" >
-    <ul style="list-style-type:none;">
-      {{#topics}}
-        <li><a href="{{url}}">{{title}}</a></li>
+    <table class="table-striped">
+      <th>Topics</th>
+        {{#topics}}
+        <tr><td><a href="{{url}}">{{title}}</a></td></tr>
       {{/topics}}
-    </ul>
+    </table>
   </main>
 
 
