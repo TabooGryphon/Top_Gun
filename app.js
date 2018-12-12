@@ -6,7 +6,8 @@ const config = {
 	views: 'views', 		// Set views directory 
 	static: 'public', 		// Set static assets directory
 	db: { 					// Database configuration. Remember to set env variables in .env file: MONGODB_URI, PROD_MONGODB_URI
-		url: 'mongodb://admin:password2@ds255403.mlab.com:55403/twist',
+		url: (process.env.TURBO_ENV == 'dev') ? process.env.MONGODB_URI : process.env.PROD_MONGODB_URI,
+		//url: 'mongodb://admin:password2@ds255403.mlab.com:55403/twist',
 		//url: 'mongodb://localhost/twist',
 		type: 'mongo',
 		onError: (err) => {
