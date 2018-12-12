@@ -13,4 +13,18 @@ Topic
   return '/topics/' + this._id;
 });
 
+// Virtual for Topic's update url
+Topic
+.virtual('urlUpdate')
+.get(function (){
+  return '/topics/' + this._id + '/update';
+});
+
+// Virtual for Topic's delete url
+Topic
+.virtual('urlDelete')
+.get(function (){
+  return '/topics/' + this._id + '/delete';
+});
+
 module.exports = mongoose.model('Topic', Topic)

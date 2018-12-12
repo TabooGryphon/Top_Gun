@@ -20,7 +20,7 @@ exports.topic_list_get = function(req, res, next){
   .sort({name: 'asc'})
   .then(function(topics, err){
     if(err){
-      res.render('error', {error: err})
+      res.render('error', {error: err});
     } else {
       res.render('topic_list', {topics});
     }

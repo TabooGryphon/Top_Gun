@@ -3,35 +3,31 @@
 {{>head}}
 
 <body class="container">
-{{>header2}}
+{{>header}}
 {{>nav}}
+    <main>
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Students</a>
+              <a class="nav-link active" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/schools">Schools</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/topics">Topics</a>
+              <a class="nav-link" href="/admin/topics">Topics</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/presenters">Presenters</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/admin/students">Ryan</a>
-            </li>
           </ul>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          {{>student_form}}
         </div>
       </div>
-
-
+    </main>
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
     NOTE: These should be minified in a build script -->
     <script type="text/javascript" src="/js/jquery.js"></script>

@@ -75,6 +75,7 @@ exports.register_post = [
         res.render('error' ,{error: err});
       }else{
         res.render('success', {thestudent});
+        console.log(req.body.school);
       }
     })
   }

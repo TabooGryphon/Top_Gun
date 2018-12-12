@@ -7,5 +7,4 @@ const EventRoster = new mongoose.Schema({
 })
 
 
-
 module.exports = mongoose.model('EventRoster', EventRoster)
