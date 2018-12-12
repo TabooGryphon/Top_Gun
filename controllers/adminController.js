@@ -536,7 +536,7 @@ exports.presenters_create_post = [
       if(err){
         res.render('error', {errors: err});
       } else {
-        res.render('admin_presenters_detail', {presenters: results})
+        res.render('admin_presenters_detail', {presenters: presenters_create})
       }
     })
   }
@@ -613,6 +613,131 @@ exports.presenters_delete_post = (req, res) => {
       res.render('error', {errors: err});
     } else {
       res.redirect('/admin/presenters');
+    }
+  })
+}
+
+//ROOMS
+
+exports.rooms_list_get = (req, res) => {
+  Room.find({})
+  .sort({roomNum:'asc'})
+  .then((results, err) => {
+    if(err){
+      res.render('error', {errors: err});
+    } else {
+      res.render('admin_rooms_list', {rooms: results})
+    }
+  })
+}
+
+exports.rooms_detail_get = (req, res) => {
+
+  Room.findById(req.params.id)
+  .then((results, err) => {
+    if(err){
+      res.render('error', {errors: err});
+    } else {
+      res.render('admin_rooms_detail', {rooms: results})
+    }
+  })
+}
+
+exports.rooms_create_get = (req, res) => {
+  res.render('admin_rooms_create');
+}
+
+exports.rooms_create_post = [
+
+  body('roomNum', 'Please enter the Room Number.').isLength({ min: 1 }).trim(),
+  body('building', 'Please enter the Building.').isLength({ min: 1 }).trim(),
+  body('capacity', 'Please enter the Room Capacity.').isLength({ min: 1 }).trim(),
+  
+  sanitizeBody('roomNum').trim().escape(),
+  sanitizeBody('building').trim().escape(),
+  sanitizeBody('capacity').trim().escape(),
+
+  (req, res) => {
+
+    var room_create = new Room({
+      roomNum: req.body.roomNum,
+      building: req.body.building,
+      capacity: req.body.capacity
+    })
+
+    Room.create(room_create)
+    .then((results, err) => {
+      if(err){
+        res.render('error', {errors: err});
+      } else {
+        res.render('admin_rooms_detail', {rooms: room_create})
+      }
+    })
+  }
+]
+
+exports.rooms_update_get = (req, res) => {
+
+  Room.findById(req.params.id)
+  .then((results, err) => {
+    if(err){
+      res.render('error', {errors: err});
+    } else {
+      res.render('admin_rooms_update', {rooms: results})
+    }
+  })
+}
+
+exports.rooms_update_post = [
+
+  body('roomNum', 'Please enter the Room Number.').isLength({ min: 1 }).trim(),
+  body('building', 'Please enter the Building.').isLength({ min: 1 }).trim(),
+  body('capacity', 'Please enter the Room Capacity.').isLength({ min: 1 }).trim(),
+  
+  sanitizeBody('roomNum').trim().escape(),
+  sanitizeBody('building').trim().escape(),
+  sanitizeBody('capacity').trim().escape(),
+
+  (req, res) => {
+
+    var room_create = new Room({
+      roomNum: req.body.roomNum,
+      building: req.body.building,
+      capacity: req.body.capacity,
+      _id: req.params.id
+    })
+
+    Room.findByIdAndUpdate(req.params.id, room_create)
+    .exec((err) => {
+      if(err){
+        res.render('error', {errors: err});
+      } else {
+        res.render('admin_rooms_detail', {rooms: room_create})
+      }
+    })
+  }
+]
+
+exports.rooms_delete_get = (req, res) =>{
+
+  Room.findById(req.params.id)
+  .then((results, err) => {
+    if(err){
+      res.render('error', {errors: err});
+    } else {
+      res.render('admin_rooms_delete', {rooms: results})
+    }
+  })
+}
+
+exports.rooms_delete_post = (req, res) => {
+
+  Room.findByIdAndDelete(req.params.id)
+  .exec((err) => {
+    if(err){
+      res.render('error', {errors: err});
+    } else {
+      res.redirect('/admin/rooms');
     }
   })
 }

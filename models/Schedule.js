@@ -2,10 +2,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const Schedule = new mongoose.Schema({
-  sessionNum: {type:Schema.Types.ObjectId, ref:'Session'}, 
-  roomNum: {type: Schema.Types.ObjectId, ref: 'Room'},
-  topicCode: {type: Schema.Types.ObjectId, ref: 'Course'},
-  ScheduleID: {type: Schema.Types.ObjectId, ref: 'Schedule'}
+  session: {type:Schema.Types.ObjectId, ref:'Session'}, 
+  room: {type: Schema.Types.ObjectId, ref: 'Room'},
+  topic: {type: Schema.Types.ObjectId, ref: 'Topic'},
 })
 
 // Virtual for Schedule's url

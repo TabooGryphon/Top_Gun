@@ -4,6 +4,7 @@ const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 
 const admin_controller = require('../controllers/adminController');
+const admin_controller2 = require('../controllers/adminController_2');
 // Routes for admin functions
 
 router.get('/', admin_controller.main);
@@ -79,5 +80,59 @@ router.get('/presenters/:id/delete', admin_controller.presenters_delete_get);
 router.post('/presenters/:id/delete', admin_controller.presenters_delete_post);
 
 router.get('/presenters/:id', admin_controller.presenters_detail_get);
+
+//ROOMS
+
+router.get('/rooms', admin_controller.rooms_list_get);
+
+router.get('/rooms/create', admin_controller.rooms_create_get);
+
+router.post('/rooms/create', admin_controller.rooms_create_post);
+
+router.get('/rooms/:id/update', admin_controller.rooms_update_get);
+
+router.post('/rooms/:id/update', admin_controller.rooms_update_post);
+
+router.get('/rooms/:id/delete', admin_controller.rooms_delete_get);
+
+router.post('/rooms/:id/delete', admin_controller.rooms_delete_post);
+
+router.get('/rooms/:id', admin_controller.rooms_detail_get);
+
+//         SESSIONS            //
+
+router.get('/sessions', admin_controller2.sessions_list_get);
+
+router.get('/sessions/create', admin_controller2.sessions_create_get);
+
+router.post('/sessions/create', admin_controller2.sessions_create_post);
+
+router.get('/sessions/:id/update', admin_controller2.sessions_update_get);
+
+router.post('/sessions/:id/update', admin_controller2.sessions_update_post);
+
+router.get('/sessions/:id/delete', admin_controller2.sessions_delete_get);
+
+router.post('/sessions/:id/delete', admin_controller2.sessions_delete_post);
+
+router.get('/sessions/:id', admin_controller2.sessions_detail_get); 
+
+// SCHEDULE //
+
+router.get('/schedules', admin_controller2.schedules_list_get);
+
+router.get('/schedules/create', admin_controller2.schedules_create_get);
+
+router.post('/schedules/create', admin_controller2.schedules_create_post);
+
+router.get('/schedules/:id/update', admin_controller2.schedules_update_get);
+
+router.post('/schedules/:id/update', admin_controller2.schedules_update_post);
+
+router.get('/schedules/:id/delete', admin_controller2.schedules_delete_get);
+
+router.post('/schedules/:id/delete', admin_controller2.schedules_delete_post);
+
+router.get('/schedules/:id', admin_controller2.schedules_detail_get);
 
 module.exports = router
