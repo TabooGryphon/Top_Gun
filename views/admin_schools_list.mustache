@@ -5,7 +5,8 @@
 <body class="container">
 {{>header}}
 {{>nav}}
-    <main>
+
+      <main>
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
@@ -24,17 +25,20 @@
           </ul>
         </div>
         <div class="card-body">
-          <table class="table-striped">
-            <tr>
-              <th>School</th>
-            </tr>
-              {{#schools}}
-                <tr>
-                  <td><a href="/admin{{url}}">{{name}}</a></td>
-                </tr>
-              {{/schools}}
-          </table>
-          <button onclick="location.href='/admin/schools/create'">Add School</button>
+          <div class="row justify-content-center">
+            <table class=" col table-striped mx-5">
+              <tr>
+                <th>School Name</th>
+              </tr>
+                {{#schools}}
+                  <tr>
+                    <td><a href="{{url}}">{{name}}</a></td>
+                  </tr>
+                {{/schools}}
+            </table>
+          </div>
+          <br>
+          <button type="button" onclick="location.href='/admin/schools/create'">Add School</button>
         </div>
       </div>
     </main>

@@ -35,21 +35,21 @@ Student
 Student
 .virtual('url')
 .get(function (){
-  return '/students/' + this._id;
+  return '/admin/students/' + this._id;
 });
 
 // Virtual for Student's update url
 Student
 .virtual('urlUpdate')
 .get(function (){
-  return '/students/' + this._id + '/update';
+  return '/admin/students/' + this._id + '/update';
 });
 
 // Virtual for Student's delete url
 Student
 .virtual('urlDelete')
 .get(function (){
-  return '/students/' + this._id + '/delete';
+  return '/admin/students/' + this._id + '/delete';
 });
 
 // Virtual to change Student's registration date and time format

@@ -11,21 +11,21 @@ const Room = new mongoose.Schema({
 Room
 .virtual('url')
 .get(function (){
-  return '/rooms/' + this._id;
+  return '/admin/rooms/' + this._id;
 });
 
 // Virtual for room's update url
 Room
 .virtual('urlUpdate')
 .get(function (){
-  return '/rooms/' + this._id + '/update';
+  return '/admin/rooms/' + this._id + '/update';
 });
 
 // Virtual for room's delete url
 Room
 .virtual('urlDelete')
 .get(function (){
-  return '/rooms/' + this._id + '/delete';
+  return '/admin/rooms/' + this._id + '/delete';
 });
 
 

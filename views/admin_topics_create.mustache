@@ -10,13 +10,13 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" href= "/admin/students">Students</a>
+              <a class="nav-link" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/schools">Schools</a>
+              <a class="nav-link" href="/admin/schools">Schools</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/topics">Topics</a>
+              <a class="nav-link  active" href="/admin/topics">Topics</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/presenters">Presenters</a>
@@ -24,19 +24,21 @@
           </ul>
         </div>
         <div class="card-body">
-          <div class="row justify-content-center">
-            <table class="col mx-auto">
-              <tr>
-                <th>Name</th>
-              </tr>
-              <tr>
-                <td>{{schools.name}}</td>
-              </tr>
-            </table>
+          <div class="row-6 justify-content-center">
+            <div class="col">
+	            <div class="m-5" style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px;">
+		            <form method="post">
+			            <div class="row-12 p-1">
+				            <label>Title:</label>&nbsp&nbsp<input type="text" name="title" placeholder="Title">
+			            </div>
+                  <div class="row-12 p-1">
+				            <label>Description:</label><br><textarea rows="10" cols="75"  name="description" placeholder="Description"></textarea>
+			            </div>
+                  <input type="submit" formmethod="post">
+		            </form>
+	            </div>
+            </div>
           </div>
-          <br>
-          <a href="{{schools.urlUpdate}}">Update</a><br>
-          <a href="{{schools.urlDelete}}">Delete</a>
         </div>
       </div>
     </main>

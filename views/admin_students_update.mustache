@@ -48,6 +48,9 @@
 				<label>E-mail</label>&nbsp&nbsp<input type="text" name="email" value='{{students.email}}'>
 			</div>
       <div class="row-12 text-right p-1">
+				<label>Date Registered:</label>&nbsp&nbsp<input type="text" name="timeStamp" value="{{students.timeStamp}}" readonly>
+			</div>
+      <div class="row-12 text-right p-1">
         <select name="choice1">
           {{#students}}
             <option value="{{choice1._id}}" selected>{{choice1.title}}</option>

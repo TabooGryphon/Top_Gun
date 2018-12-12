@@ -24,16 +24,19 @@
           </ul>
         </div>
         <div class="card-body">
-          <table class="table-striped">
-            <tr>
-              <th>Presenters</th>
-            </tr>
-              {{#presenters}}
-                <tr>
-                  <td><a href="/admin{{url}}">{{properName}}</a></td>
-                </tr>
-              {{/presenters}}
-          </table>
+          <div class="row justify-content-center">
+            <table class=" col table-striped mx-5">
+              <tr>
+                <th>School Name</th>
+              </tr>
+                {{#presenters}}
+                  <tr>
+                    <td><a href="{{url}}">{{properName}}</a></td>
+                  </tr>
+                {{/presenters}}
+            </table>
+          </div>
+          <br>
           <button onclick="location.href='/admin/presenters/create'">Add Presenter</button>
         </div>
       </div>

@@ -14,21 +14,21 @@ const Presenter = new mongoose.Schema({
 Presenter
 .virtual('url')
 .get(function (){
-  return '/presenters/' + this._id;
+  return '/admin/presenters/' + this._id;
 });
 
 // Virtual for Presenter's update url
 Presenter
 .virtual('urlUpdate')
 .get(function (){
-  return '/presenters/' + this._id + '/update';
+  return '/admin/presenters/' + this._id + '/update';
 });
 
 // Virtual for Presenter's delete url
 Presenter
 .virtual('urlDelete')
 .get(function (){
-  return '/presenters/' + this._id + '/delete';
+  return '/admin/presenters/' + this._id + '/delete';
 });
 
 // Virtual for Instructor's proper name

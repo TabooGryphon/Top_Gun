@@ -12,21 +12,21 @@ const Schedule = new mongoose.Schema({
 Schedule
 .virtual('url')
 .get(function (){
-  return '/schedules/' + this._id;
+  return '/admin/schedules/' + this._id;
 });
 
 // Virtual for Schedule's update url
 Schedule
 .virtual('urlUpdate')
 .get(function (){
-  return '/schedules/' + this._id + '/update';
+  return '/admin/schedules/' + this._id + '/update';
 });
 
 // Virtual for Schedule's delete url
 Schedule
 .virtual('urlDelete')
 .get(function (){
-  return '/schedules/' + this._id + '/delete';
+  return '/admin/schedules/' + this._id + '/delete';
 });
 
 module.exports = mongoose.model('Schedule', Schedule)

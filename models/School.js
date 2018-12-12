@@ -9,21 +9,21 @@ const School = new mongoose.Schema({
 School
 .virtual('url')
 .get(function (){
-  return '/schools/' + this._id;
+  return '/admin/schools/' + this._id;
 });
 
 // Virtual for School's update url
 School
 .virtual('urlUpdate')
 .get(function (){
-  return '/schools/' + this._id + '/update';
+  return '/admin/schools/' + this._id + '/update';
 });
 
 // Virtual for School's delete url
 School
 .virtual('urlDelete')
 .get(function (){
-  return '/schools/' + this._id + '/delete';
+  return '/admin/schools/' + this._id + '/delete';
 });
 
 module.exports = mongoose.model('School', School)

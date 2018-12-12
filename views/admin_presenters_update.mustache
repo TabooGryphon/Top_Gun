@@ -10,34 +10,49 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" href= "/admin/students">Students</a>
+              <a class="nav-link" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/schools">Schools</a>
+              <a class="nav-link" href="/admin/schools">Schools</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/topics">Topics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/presenters">Presenters</a>
+              <a class="nav-link  active" href="/admin/presenters">Presenters</a>
             </li>
           </ul>
         </div>
         <div class="card-body">
           <div class="row justify-content-center">
-            <table class="col mx-auto">
-              <tr>
-                <th>Name</th>
-              </tr>
-              <tr>
-                <td>{{schools.name}}</td>
-              </tr>
-            </table>
+            <div class="col-auto">
+	            <div class="m-5" style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px;">
+		            <form action="" method="post">
+			            <div class="row-12 text-right p-1">
+				            <label>First Name:</label>&nbsp&nbsp<input type="text" name="firstName" value="{{presenters.firstName}}">
+			            </div>
+			            <div class="row-12 text-right p-1">
+				            <label>Last Name:</label>&nbsp&nbsp<input type="text" name="lastName" value="{{presenters.lastName}}">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>Occupation:</label>&nbsp&nbsp<input type="text" name="occupation" value="{{presenters.occupation}}">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>Main Phone:</label>&nbsp&nbsp<input type="text" name="mainPhone" value="{{presenters.mainPhone}}">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>Cell Phone:</label>&nbsp&nbsp<input type="text" name="cellPhone" value="{{presenters.cellPhone}}">
+			            </div>
+                  <div class="row-12 text-right p-1">
+				            <label>E-Mail:</label>&nbsp&nbsp<input type="text" name="email" value="{{presenters.email}}">
+			            </div>
+                  <br>
+                  <input type="submit" value="Submit">
+		            </form>
+	            </div>
+            </div>
+            </div>
           </div>
-          <br>
-          <a href="{{schools.urlUpdate}}">Update</a><br>
-          <a href="{{schools.urlDelete}}">Delete</a>
-        </div>
       </div>
     </main>
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.

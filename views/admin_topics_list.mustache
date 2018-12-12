@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 {{>head}}
-Ryan
 <body class="container">
 {{>header}}
 {{>nav}}
+      <main>
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
@@ -23,19 +23,23 @@ Ryan
           </ul>
         </div>
         <div class="card-body">
-          <table class="table-striped">
-            <tr>
-              <th>Topics</th>
-            </tr>
-              {{#topics}}
-                <tr>
-                  <td><a href="/admin{{url}}">{{title}}</a></td>
-                </tr>
-              {{/topics}}
-          </table>
-          <button onclick="location.href='/admin/topics/create'">Add Topic</button>
+          <div class="row justify-content-center">
+            <table class=" col table-striped mx-5">
+              <tr>
+                <th>Topics</th>
+              </tr>
+                {{#topics}}
+                  <tr>
+                    <td><a href="{{url}}">{{title}}</a></td>
+                  </tr>
+                {{/topics}}
+            </table>
+          </div>
+          <br>
+          <button type="button" onclick="location.href='/admin/topics/create'">Add Topic</button>
         </div>
       </div>
+    </main>
 
 
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.

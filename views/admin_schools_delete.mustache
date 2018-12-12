@@ -25,6 +25,11 @@
         </div>
         <div class="card-body">
           <div class="row justify-content-center">
+          <form>
+            <div class="mb-5">
+            <h2>Are you sure you want to delete this school?</h2>
+            <input type="submit" formmethod="post" value="Delete">
+          </div>
             <table class="col mx-auto">
               <tr>
                 <th>Name</th>
@@ -33,10 +38,8 @@
                 <td>{{schools.name}}</td>
               </tr>
             </table>
+            </form>
           </div>
-          <br>
-          <a href="{{schools.urlUpdate}}">Update</a><br>
-          <a href="{{schools.urlDelete}}">Delete</a>
         </div>
       </div>
     </main>

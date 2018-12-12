@@ -6,38 +6,59 @@
 {{>header}}
 {{>nav}}
     <main>
+      <div class="col">
       <div class="card text-center m-5">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" href= "/admin/students">Students</a>
+              <a class="nav-link" href="/admin/students">Students</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/admin/schools">Schools</a>
+              <a class="nav-link" href="/admin/schools">Schools</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/topics">Topics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/presenters">Presenters</a>
+              <a class="nav-link active" href="/admin/presenters">Presenters</a>
             </li>
           </ul>
         </div>
         <div class="card-body">
-          <div class="row justify-content-center">
-            <table class="col mx-auto">
-              <tr>
-                <th>Name</th>
-              </tr>
-              <tr>
-                <td>{{schools.name}}</td>
-              </tr>
-            </table>
+        <div class="row justify-content-center">
+          <table class="col-6 mx-auto">
+            <tr>
+              <td class="text-right font-weight-bold">Name:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{presenters.properName}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Ocupation:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{presenters.occupation}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Main Phone:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{presenters.mainPhone}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">Cell Phone:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{presenters.cellPhone}}</td>
+            </tr>
+            <tr>
+              <td class="text-right font-weight-bold">E-Mail:</td>
+              <td>&nbsp&nbsp</td>
+              <td class="text-left">{{presenters.email}}</td>
+            </tr>
+          </table>
           </div>
           <br>
-          <a href="{{schools.urlUpdate}}">Update</a><br>
-          <a href="{{schools.urlDelete}}">Delete</a>
+          <a href="{{presenters.urlUpdate}}">Update</a>&nbsp&nbsp
+          <a href="{{presenters.urlDelete}}">Delete</a>
         </div>
+      </div>
       </div>
     </main>
     <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
