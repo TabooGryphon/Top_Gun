@@ -177,7 +177,7 @@ exports.students_update_post = [
 
   function(req, res, next){
 
-    var admin_student_update = new Student({
+    var student_update = new Student({
       lastName: req.body.lastName,
       firstName: req.body.firstName,
       school: req.body.school,
@@ -191,11 +191,11 @@ exports.students_update_post = [
       _id: req.params.id
     })
 
-    Student.findByIdAndUpdate(req.params.id, admin_student_update, (err, admin_student_update) => {
+    Student.findByIdAndUpdate(req.params.id, student_update, (err, student_update) => {
       if(err){
         res.render('error', {error: err})
       } else {
-        res.render('admin_students_detail', {students: admin_student_update});
+        res.redirect(student_update.url);
       }
     })
   }
