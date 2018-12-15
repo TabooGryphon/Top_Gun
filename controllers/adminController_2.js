@@ -76,15 +76,7 @@ exports.sessions_update_get = (req, res) => {
   })
 }
 
-exports.sessions_update_post = [
-
-  body('sessionNumber', 'Please enter the Room Number.').isLength({ min: 1 }).trim(),
-  body('time', 'Please enter the Building.').isLength({ min: 1 }).trim(),
-  
-  sanitizeBody('sessionNumber').trim().escape(),
-  sanitizeBody('time').trim().escape(),
-
-  (req, res) => {
+exports.sessions_update_post = (req, res) => {
 
     var session_create = new Session({
       sessionNumber: req.body.sessionNumber,
@@ -101,7 +93,6 @@ exports.sessions_update_post = [
       }
     })
   }
-]
 
 exports.sessions_delete_get = (req, res) =>{
 
@@ -187,17 +178,7 @@ exports.schedules_create_get = (req, res, next) => {
   
 }
 
-exports.schedules_create_post = [
-
-  body('session', 'Please choose a Session.').isLength({ min: 1 }).trim(),
-  body('room', 'Please choose a Room.').isLength({ min: 1 }).trim(),
-  body('topic', 'Please choose a Topic.').isLength({ min: 1 }).trim(),
-  
-  sanitizeBody('session').trim().escape(),
-  sanitizeBody('room').trim().escape(),
-  sanitizeBody('topic').trim().escape(),
-
-  (req, res) => {
+exports.schedules_create_post = (req, res) => {
 
     var schedule_create = new Schedule({
       session: req.body.session,
@@ -224,7 +205,6 @@ exports.schedules_create_post = [
       }
     })
   }
-]
 
 exports.schedules_update_get = (req, res) => {
 
@@ -260,17 +240,7 @@ exports.schedules_update_get = (req, res) => {
     })
 }
 
-exports.schedules_update_post = [
-
-  body('session', 'Please choose a Session.').isLength({ min: 1 }).trim(),
-  body('room', 'Please choose a Room.').isLength({ min: 1 }).trim(),
-  body('topic', 'Please choose a Topic.').isLength({ min: 1 }).trim(),
-  
-  sanitizeBody('session').trim().escape(),
-  sanitizeBody('room').trim().escape(),
-  sanitizeBody('topic').trim().escape(),
-
-  (req, res) => {
+exports.schedules_update_post = (req, res) => {
 
     var schedule_update = new Schedule({
       session: req.body.session,
@@ -287,8 +257,6 @@ exports.schedules_update_post = [
           }
         })
   }
-  
-]
 
 exports.schedules_delete_get = (req, res) =>{
 

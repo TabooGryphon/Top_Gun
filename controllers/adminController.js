@@ -61,30 +61,7 @@ exports.students_create_get = function(req, res, next){
       })
 }
 
-exports.students_create_post = [
-
-  // Validate fields.
-  body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
-  body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
-	body('school', 'Please select your School').isLength({ min: 1 }).trim(),
-	body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
-	body('phone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
-	body('choice1', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice2', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice3', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice4', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice5', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-
-  // Sanitize fields.
-  sanitizeBody('firstName').trim().escape(),
-  sanitizeBody('lastName').trim().escape(),
-  sanitizeBody('address').trim().escape(),
-  sanitizeBody('email').trim().escape(),
-  sanitizeBody('phone').trim().escape(),
-
-  function addStudent(req, res, next){
-
-    const errors = validationResult(req);
+exports.students_create_post = function addStudent(req, res, next){
     
     var student_register = new Student({
       lastName: req.body.lastName,
@@ -120,8 +97,6 @@ exports.students_create_post = [
       }
     })
   }
-  
-]
 
 exports.students_update_get = function(req, res, next){
 
@@ -153,29 +128,7 @@ exports.students_update_get = function(req, res, next){
 
 }
 
-exports.students_update_post = [
-
-  // Validate fields.
-  body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
-  body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
-	body('school', 'Please select your School').isLength({ min: 1 }).trim(),
-	body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
-	body('phone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
-	body('choice1', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice2', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice3', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice4', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-	body('choice5', 'Please make fill all choices').isLength({ min: 1 }).trim(),
-
-  // Sanitize fields.
-  sanitizeBody('firstName').trim().escape(),
-  sanitizeBody('lastName').trim().escape(),
-  sanitizeBody('address').trim().escape(),
-  sanitizeBody('email').trim().escape(),
-  sanitizeBody('phone').trim().escape(),
-
-
-  function(req, res, next){
+exports.students_update_post = function(req, res, next){
 
     var student_update = new Student({
       lastName: req.body.lastName,
@@ -200,7 +153,6 @@ exports.students_update_post = [
       }
     })
   }
-]
 
 exports.students_delete_get = function(req, res, next){
 
@@ -272,13 +224,7 @@ exports.schools_create_get = function(req, res, next){
   res.render('admin_schools_create');
 }
 
-exports.schools_create_post = [
-
-  body('name', 'Please enter the School Name.').isLength({ min: 1 }).trim(),
-
-  sanitizeBody('name').trim().escape(),
-
-  (req, res, next) => {
+exports.schools_create_post = (req, res, next) => {
 
     var school_create = new School({
       name: req.body.name
@@ -293,7 +239,6 @@ exports.schools_create_post = [
       }
     })
   }
-]
 
 exports.schools_update_get = function(req, res, next){
   
@@ -307,12 +252,7 @@ exports.schools_update_get = function(req, res, next){
   })
 }
 
-exports.schools_update_post = [
-
-  body('name', 'Please enter the School Name.').isLength({ min: 1 }).trim(),
-  sanitizeBody('name').trim().escape(),
-
-  (req, res, next) => {
+exports.schools_update_post = (req, res, next) => {
 
     var school_update = new School({
       name: req.body.name,
@@ -329,8 +269,6 @@ exports.schools_update_post = [
     })
   }
 
-]
-
 exports.schools_delete_get = function(req, res, next){
   School.findById(req.params.id)
   .then(function(results, err){
@@ -342,12 +280,7 @@ exports.schools_delete_get = function(req, res, next){
   })
 }
 
-exports.schools_delete_post = [
-
-  body('name', 'Please enter the School Name.').isLength({ min: 1 }).trim(),
-  sanitizeBody('name').trim().escape(),
-
-  (req, res, next) => {
+exports.schools_delete_post = (req, res, next) => {
     School.findByIdAndDelete(req.params.id)
     .exec(function(err){
       if(err){
@@ -357,7 +290,6 @@ exports.schools_delete_post = [
       }
     })
   }
-]
 
 //TOPICS
 
@@ -386,9 +318,7 @@ exports.topics_create_get = function(req, res, next){
   res.render('admin_topics_create');
 }
 
-exports.topics_create_post = [
-
-  (req, res, next) => {
+exports.topics_create_post = (req, res, next) => {
 
     var topic_create = new Topic({
       title: req.body.title, 
@@ -404,7 +334,6 @@ exports.topics_create_post = [
       }
     })
   }
-]
 
 exports.topics_update_get = function(req, res, next){
 
@@ -418,14 +347,7 @@ exports.topics_update_get = function(req, res, next){
   })
 }
 
-exports.topics_update_post = [
-
-  body('title', 'Please enter the Topic Title.').isLength({ min: 1 }).trim(),
-  body('description', 'Please enter the Topic Description.').isLength({ min: 1 }).trim(),
-  sanitizeBody('title').trim().escape(),
-  sanitizeBody('description').trim().escape(),
-
-  (req, res) => {
+exports.topics_update_post = (req, res) => {
 
     var topic_update = new Topic({
       title: req.body.title, 
@@ -442,7 +364,6 @@ exports.topics_update_post = [
       }
     })
   }
-]
 
 exports.topics_delete_get = (req, res) => {
 
@@ -500,23 +421,7 @@ exports.presenters_create_get = (req, res) => {
   res.render('admin_presenters_create');
 }
 
-exports.presenters_create_post = [
-
-  body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
-  body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
-	body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
-	body('mainPhone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
-	body('cellPhone', 'Please enter your Cell Phone Number.').isLength({ min: 1 }).trim(),
-
-  sanitizeBody('firstName').trim().escape(),
-  sanitizeBody('lastName').trim().escape(),
-  sanitizeBody('occupation').trim().escape(),
-  sanitizeBody('email').trim().escape(),
-  sanitizeBody('mainPhone').trim().escape(),
-  sanitizeBody('cellPhone').trim().escape(),
-
-
-  (req, res) => {
+exports.presenters_create_post = (req, res) => {
 
     var presenter_create = new Presenter({
       firstName: req.body.firstName,
@@ -536,7 +441,6 @@ exports.presenters_create_post = [
       }
     })
   }
-]
 
 exports.presenters_update_get = (req, res) => {
 
@@ -550,23 +454,7 @@ exports.presenters_update_get = (req, res) => {
   })
 }
 
-exports.presenters_update_post = [
-
-  body('firstName', 'Please enter your First Name.').isLength({ min: 1 }).trim(),
-  body('lastName', 'Please enter your Last Name.').isLength({ min: 1 }).trim(),
-	body('email', 'Please enter your E-Mail.').isLength({ min: 1 }).trim(),
-	body('mainPhone', 'Please enter your Phone Number.').isLength({ min: 1 }).trim(),
-	body('cellPhone', 'Please enter your Cell Phone Number.').isLength({ min: 1 }).trim(),
-
-  sanitizeBody('firstName').trim().escape(),
-  sanitizeBody('lastName').trim().escape(),
-  sanitizeBody('occupation').trim().escape(),
-  sanitizeBody('email').trim().escape(),
-  sanitizeBody('mainPhone').trim().escape(),
-  sanitizeBody('cellPhone').trim().escape(),
-
-
-  (req, res) => {
+exports.presenters_update_post = (req, res) => {
 
     var presenter_update = new Presenter({
       firstName: req.body.firstName,
@@ -587,7 +475,6 @@ exports.presenters_update_post = [
       }
     })
   }
-]
 
 exports.presenters_delete_get = (req, res) => {
 
@@ -643,17 +530,7 @@ exports.rooms_create_get = (req, res) => {
   res.render('admin_rooms_create');
 }
 
-exports.rooms_create_post = [
-
-  body('roomNum', 'Please enter the Room Number.').isLength({ min: 1 }).trim(),
-  body('building', 'Please enter the Building.').isLength({ min: 1 }).trim(),
-  body('capacity', 'Please enter the Room Capacity.').isLength({ min: 1 }).trim(),
-  
-  sanitizeBody('roomNum').trim().escape(),
-  sanitizeBody('building').trim().escape(),
-  sanitizeBody('capacity').trim().escape(),
-
-  (req, res) => {
+exports.rooms_create_post = (req, res) => {
 
     var room_create = new Room({
       roomNum: req.body.roomNum,
@@ -670,7 +547,6 @@ exports.rooms_create_post = [
       }
     })
   }
-]
 
 exports.rooms_update_get = (req, res) => {
 
@@ -684,17 +560,7 @@ exports.rooms_update_get = (req, res) => {
   })
 }
 
-exports.rooms_update_post = [
-
-  body('roomNum', 'Please enter the Room Number.').isLength({ min: 1 }).trim(),
-  body('building', 'Please enter the Building.').isLength({ min: 1 }).trim(),
-  body('capacity', 'Please enter the Room Capacity.').isLength({ min: 1 }).trim(),
-  
-  sanitizeBody('roomNum').trim().escape(),
-  sanitizeBody('building').trim().escape(),
-  sanitizeBody('capacity').trim().escape(),
-
-  (req, res) => {
+exports.rooms_update_post = (req, res) => {
 
     var room_create = new Room({
       roomNum: req.body.roomNum,
@@ -712,7 +578,6 @@ exports.rooms_update_post = [
       }
     })
   }
-]
 
 exports.rooms_delete_get = (req, res) =>{
 
