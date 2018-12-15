@@ -191,7 +191,8 @@ exports.students_update_post = [
       _id: req.params.id
     })
 
-    Student.findByIdAndUpdate(req.params.id, student_update, (err, student_update) => {
+    Student.findByIdAndUpdate(req.params.id, student_update)
+    .then((results, err) => {
       if(err){
         res.render('error', {error: err})
       } else {
