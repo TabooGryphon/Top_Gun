@@ -239,27 +239,25 @@ exports.schedules_update_get = (req, res) => {
     },
     sessions: (callback) => {
       Session.find({})
-      .sort({sessionNum: 'asc'})
       .exec(callback)
     },
     rooms: (callback) => {
       Room.find({})
-      .sort({roomNum:'asc'})
       .exec(callback)
     },
     topics: (callback) => {
       Topic.find({})
-      .sort({title: 'asc'})
       .exec(callback)
-    },
+    }
+  },
     function(err, results){
       if(err){
+        console.log(err);
         res.render('error', {errors: err})
       } else {
-        res.render('admin_schedules_create', {schedules: results.schedules, sessions: results.sessions, rooms: results.rooms, topics: results.topics});
+        res.render('admin_schedules_update', {schedules: results.schedules, sessions: results.sessions, rooms: results.rooms, topics: results.topics});
       }
-    }
-  })
+    })
 }
 
 exports.schedules_update_post = [
@@ -281,25 +279,15 @@ exports.schedules_update_post = [
       _id: req.params.id
     })
 
-    Schedule.create(schedule_update)
-    .then((results, err) => {
-      if(err){
-        res.render('error', {errors: err});
-      } else {
-        Schedule.findById(req.params.id)
-        .populate('session')
-        .populate('room')
-        .populate('topic')
-        .then((results, err) => {
-          if(err){
-            res.render('error', {errors: err});
+        Schedule.findByIdAndUpdate(req.params.id, schedule_update, (err, schedule_update) => {
+          if (err) {
+            res.render('error', {errors: err})
           } else {
-            res.render('admin_schedules_detail', {schedules: results})
+            res.redirect(schedule_update.url);
           }
         })
-      }
-    })
   }
+  
 ]
 
 exports.schedules_delete_get = (req, res) =>{

@@ -44,7 +44,6 @@ exports.students_detail_get = function(req, res, next){
     if (err){
       res.render('error', {error: err});
     } else {
-      console.log(results.choice1);
       res.render('admin_students_detail', {students: results});
     }
   })
@@ -402,8 +401,6 @@ exports.topics_create_post = [
       if (err){
         res.render('error', {errors: err})
       } else {
-
-        console.log(results);
         res.render('admin_topics_detail', {topics: results})
       }
     })

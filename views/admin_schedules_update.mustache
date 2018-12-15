@@ -39,7 +39,7 @@
 		            <form action="" method="post">
                   <div class="row-12 text-right p-1">
 				            <label>Session:</label>&nbsp&nbsp<select name="session">
-                      <option value="{{schedules.session}}">{{schedules.session.sessionNumber}}</option>
+                      <option value="{{schedules.session._id}}">{{schedules.session.sessionNumber}}</option>
 										  {{#sessions}}
 										    <option value="{{_id}}">{{sessionNumber}}</option>
 										  {{/sessions}}
@@ -47,7 +47,7 @@
 			            </div>
                   <div class="row-12 text-right p-1">
 				            <label>Room:</label>&nbsp&nbsp<select name="room">
-                    <option value="{{schedules.session}}">{{schedules.room.roomNum}}</option>
+                    <option value="{{schedules.room._id}}">{{schedules.room.roomNum}}</option>
 										  {{#rooms}}
 										    <option value="{{_id}}">{{roomNum}}</option>
 										  {{/rooms}}
@@ -55,7 +55,7 @@
 			            </div>
                   <div class="row-12 text-right p-1">
 				            <label>Topic:</label>&nbsp&nbsp<select name="topic">
-                    <option value="{{schedules.topic}}">{{schedules.topic.title}}</option>
+                    <option value="{{schedules.topic._id}}">{{schedules.topic.title}}</option>
 										  {{#topics}}
 										    <option value="{{_id}}">{{title}}</option>
 										  {{/topics}}
